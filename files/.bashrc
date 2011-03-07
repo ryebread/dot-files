@@ -43,10 +43,32 @@ if [ "$TERM" != "dumb" ]; then
     alias vi='mate'
   fi
 
-  alias ls="ls $color_option"
-  alias ll="ls -lh $color_option"
-  alias la="ls -a $color_option"
-  alias lal="ls -lha $color_option"
+#alias ls="ls --color=auto" not necessary in Arch Linux
+alias p="pacman" #timesaving!!
+alias p="yaourt" #even more timesaving :))
+alias ll="ls -lh"
+alias la="ls -a"
+alias exit="clear; exit"
+alias x="startx"
+alias pacsearch="pacman -Sl | cut -d' ' -f2 | grep " #lets you search through all available packages simply using 'pacsearch packagename'
+alias pacup="sudo pacman -Syu" # sudo pacman -Syu by typing pacup (sudo must be installed and configured first ;) )
+alias pac="sudo pacman -S" # sudo pacman -S by typing pac (sudo must be installed and configured first ;) )
+# colorized pacman output with pacs alias:
+alias pacs="pacsearch"
+
+pacsearch () {
+       echo -e "$(pacman -Ss $@ | sed \
+       -e 's#core/.*#\\033[1;31m&\\033[0;37m#g' \
+       -e 's#extra/.*#\\033[0;32m&\\033[0;37m#g' \
+       -e 's#community/.*#\\033[1;35m&\\033[0;37m#g' \
+       -e 's#^.*/.* [0-9].*#\\033[0;36m&\\033[0;37m#g' )"
+}
+
+PS1='\[\e[0;33m\]\t \[\e[0;31m\]\u@\h \[\e[1;34m\]\w \[\e[0;0m\]\$ '
+
+export XMODIFIERS="@im=fcitx"
+export QT_IM_MODULE=xim
+export GTK_IM_MODULE=xim
 
   . ~/.scripts/j.sh
 
