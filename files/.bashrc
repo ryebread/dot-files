@@ -20,8 +20,8 @@ fi
 
 export ARCHFLAGS='-arch i386'
 export MAKEFLAGS='-j4'
-export RUBYLIB="lib:test:$RUBYLIB"
-export GEMS="`gem env gemdir`/gems"
+#export RUBYLIB="lib:test:$RUBYLIB"
+#export GEMS="`gem env gemdir`/gems"
 export HISTSIZE=1000000
 
 bind "set show-all-if-ambiguous On"

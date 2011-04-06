@@ -10,17 +10,20 @@ fi
 
 fcitx &
 
-#use gnome theme
-gnome-settings-daemon &
+#use gnome theme  ;; use gtk-chtheme stead
+#gnome-settings-daemon &
 
-#network manager
-nm-applet &
 
 #auto update
 update-notifier &
 
 setxkbmap -option ctrl:nocaps       # Make Caps Lock a Control key
-wine /home/liubin/.wine/drive_c/Tools/GFW/fg708x.exe &
+wine /home/liubin/.wine/drive_c/Tools/GFW/fg709x.exe &
+
+#network manager
+exec wicd-client &
+
+exec batterymon &
 
 #exec musca
 exec awesome
